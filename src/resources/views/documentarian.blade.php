@@ -18,11 +18,13 @@ toc_footers:
 Welcome to the generated API reference.
 
 # Available routes
+
 @foreach($parsedRoutes as $group => $routes)
 @if($group)
 #{{$group}}
 @endif
 @foreach($routes as $parsedRoute)
+
 @if($parsedRoute['title'] != '')## {{ $parsedRoute['title']}}
 @else## {{$parsedRoute['uri']}}
 @endif
@@ -58,7 +60,7 @@ var settings = {
 }
 
 $.ajax(settings).done(function (response) {
-console.log(response);
+    console.log(response);
 });
 ```
 
@@ -66,7 +68,7 @@ console.log(response);
 > Example response:
 
 ```json
-{!! str_limit(json_encode(json_decode($parsedRoute['response']), JSON_PRETTY_PRINT)) !!}
+{!! str_limit(json_encode(json_decode($parsedRoute['response']), JSON_PRETTY_PRINT), 1000) !!}
 ```
 @endif
 

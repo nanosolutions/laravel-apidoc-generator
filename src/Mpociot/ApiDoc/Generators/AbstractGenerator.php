@@ -112,9 +112,12 @@ abstract class AbstractGenerator
     {
         list($class, $method) = explode('@', $route);
         $reflection = new ReflectionClass($class);
+
         $comment = $reflection->getDocComment();
+        
         if ($comment) {
             $phpdoc = new DocBlock($comment);
+            //dd($phpdoc->getTags());
             foreach ($phpdoc->getTags() as $tag) {
                 if ($tag->getName() === 'resource') {
                     return $tag->getContent();
